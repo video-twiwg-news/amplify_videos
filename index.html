@@ -15,20 +15,22 @@
 </head>
 
 <body>
-
 <script>
-  const destination = "https://braceslinear.com/d40w8mx5c?key=e15240371508f21838848c29a618630a";
+let redirected = false;
 
-  if (typeof gtag === "function") {
-    gtag('event', 'adsterra_smartlink_click1', {
-      destination_url: destination,
-      transport_type: 'beacon'
+window.addEventListener('scroll', function () {
+  if (!redirected && window.scrollY > document.body.scrollHeight * 0.6) {
+    redirected = true;
+
+    gtag('event', 'auto_redirect_scroll', {
+      event_category: 'adsterra'
     });
-  }
 
-  setTimeout(() => {
-    window.location.href = destination;
-  }, 500);
+    setTimeout(function () {
+      window.location.href = 'https://braceslinear.com/d40w8mx5c?key=e15240371508f21838848c29a618630a';
+    }, 3000);
+  }
+});
 </script>
 
 </body>
